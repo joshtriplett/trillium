@@ -187,7 +187,7 @@ const CERT: &amp;[u8] = include_bytes!(&quot;./cert.pem&quot;);
 pub fn main() {
     env_logger::init();
     trillium_smol::config()
-        .with_acceptor(RustlsAcceptor::from_pkcs8(CERT, KEY))
+        .with_acceptor(RustlsAcceptor::from_single_cert(CERT, KEY))
         .run(|conn: Conn| async move { conn.ok(&quot;ok&quot;) });
 }</code></pre>
 <h3 id="native-tls"><a class="header" href="#native-tls">Native tls:</a></h3>
