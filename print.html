@@ -576,7 +576,7 @@ pub fn main() {
             .get(&quot;/&quot;, |conn: Conn| async move { conn.ok(&quot;hello everyone&quot;) })
             .get(&quot;/hello/:planet&quot;, |conn: Conn| async move {
                 let planet = conn.param(&quot;planet&quot;).unwrap();
-                let response_body = format!(&quot;hello {}&quot;, planet);
+                let response_body = format!(&quot;hello {planet}&quot;);
                 conn.ok(response_body)
             }),
     );
@@ -787,7 +787,7 @@ pub fn main() {
         |conn: Conn| async move {
             let count: usize = conn.session().get(&quot;count&quot;).unwrap_or_default();
             conn.with_session(&quot;count&quot;, count + 1)
-                .ok(format!(&quot;count: {}&quot;, count))
+                .ok(format!(&quot;count: {count}&quot;))
         },
     ));
 }</code></pre>
@@ -873,7 +873,7 @@ async fn teapot(mut conn: Conn) -&gt; Conn {
     if request_body.is_empty() {
         conn.with_status(406).with_body(&quot;unacceptable!&quot;).halt()
     } else {
-        conn.with_body(format!(&quot;request body was: {}&quot;, request_body))
+        conn.with_body(format!(&quot;request body was: {request_body}&quot;))
             .with_status(418)
             .with_header(KnownHeaderName::Server, &quot;zojirushi&quot;)
     }
@@ -971,7 +971,7 @@ use trillium::{Conn, Handler};
 fn handler() -&gt; impl Handler {
     (ConnCounterHandler::new(), |conn: Conn| async move {
         let conn_number = conn.conn_number();
-        conn.ok(format!(&quot;conn number was {}&quot;, conn_number))
+        conn.ok(format!(&quot;conn number was {conn_number}&quot;))
     })
 }
 

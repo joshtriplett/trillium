@@ -188,7 +188,7 @@ pub fn main() {
         |conn: Conn| async move {
             let count: usize = conn.session().get(&quot;count&quot;).unwrap_or_default();
             conn.with_session(&quot;count&quot;, count + 1)
-                .ok(format!(&quot;count: {}&quot;, count))
+                .ok(format!(&quot;count: {count}&quot;))
         },
     ));
 }</code></pre>
