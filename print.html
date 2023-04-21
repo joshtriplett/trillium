@@ -799,14 +799,17 @@ pub fn main() {
 support reverse proxying requests. There are two tls implementations
 for this client.</p>
 <pre><code class="language-rust noplaypen">use trillium_logger::Logger;
-use trillium_rustls::RustlsConnector;
-use trillium_smol::TcpConnector;
-
-type Proxy = trillium_proxy::Proxy&lt;RustlsConnector&lt;TcpConnector&gt;&gt;;
+use trillium_proxy::Proxy;
+use trillium_rustls::RustlsConfig;
+use trillium_smol::ClientConfig;
 
 pub fn main() {
     env_logger::init();
-    trillium_smol::run((Logger::new(), Proxy::new(&quot;https://httpbin.org/&quot;)));
+    let client_config = RustlsConfig::default().with_tcp_config(ClientConfig::default());
+    trillium_smol::run((
+        Logger::new(),
+        Proxy::new(client_config, &quot;https://httpbin.org/&quot;),
+    ));
 }</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="static-file-serving"><a class="header" href="#static-file-serving">Static file serving</a></h2>
 <p>Trillium offers two rudimentary approaches to static file serving for now. Neither of these approaches perform any cache-related header checking yet.</p>
