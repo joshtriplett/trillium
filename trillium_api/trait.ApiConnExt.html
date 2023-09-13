@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Extension trait that adds api methods to `trillium::Conn`"><title>ApiConnExt in trillium_api - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-47e7ab555ef2818a.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="trillium_api" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.0-nightly (d9c8274fb 2023-09-12)" data-channel="nightly" data-search-js="search-5d3eaacf19ebf04f.js" data-settings-js="settings-74424d7eec62a23e.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-f194925aa375ae96.css" data-theme-dark-css="dark-1dd4d1ce031e15de.css" data-theme-ayu-css="ayu-49e58d069f567085.css" ><script src="../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-8d035c8cea6edbc4.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../static.files/light-f194925aa375ae96.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../static.files/dark-1dd4d1ce031e15de.css"><link rel="stylesheet" href="../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc trait"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../trillium_api/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../trillium_api/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">ApiConnExt</a></h2><div class="sidebar-elems"><section><h3><a href="#required-methods">Required Methods</a></h3><ul class="block"><li><a href="#tymethod.deserialize">deserialize</a></li><li><a href="#tymethod.deserialize_json">deserialize_json</a></li><li><a href="#tymethod.serialize">serialize</a></li><li><a href="#tymethod.store_error">store_error</a></li><li><a href="#tymethod.with_json">with_json</a></li></ul><h3><a href="#foreign-impls">Implementations on Foreign Types</a></h3><ul class="block"><li><a href="#impl-ApiConnExt-for-Conn">Conn</a></li></ul><h3><a href="#implementors">Implementors</a></h3></section><h2><a href="index.html">In trillium_api</a></h2></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Trait <a href="index.html">trillium_api</a>::<wbr><a class="trait" href="#">ApiConnExt</a><button id="copy-path" title="Copy item path to clipboard"><img src="../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="src" href="../src/trillium_api/api_conn_ext.rs.html#13-166">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><pre class="rust item-decl"><code>pub trait ApiConnExt {
+    // Required methods
+    fn <a href="#tymethod.with_json" class="fn">with_json</a>(self, response: &amp;impl <a class="trait" href="https://docs.rs/serde/1.0.188/serde/ser/trait.Serialize.html" title="trait serde::ser::Serialize">Serialize</a>) -&gt; Self;
+<span class="item-spacer"></span>    fn <a href="#tymethod.deserialize" class="fn">deserialize</a>&lt;'life0, 'async_trait, T&gt;(
+        &amp;'life0 mut self
+    ) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html" title="struct core::pin::Pin">Pin</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html" title="struct alloc::boxed::Box">Box</a>&lt;dyn <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a>&lt;Output = <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, <a class="enum" href="enum.Error.html" title="enum trillium_api::Error">Error</a>&gt;&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'async_trait&gt;&gt;
+       <span class="where">where T: <a class="trait" href="https://docs.rs/serde/1.0.188/serde/de/trait.DeserializeOwned.html" title="trait serde::de::DeserializeOwned">DeserializeOwned</a> + 'async_trait,
+             Self: 'async_trait,
+             'life0: 'async_trait</span>;
+<span class="item-spacer"></span>    fn <a href="#tymethod.deserialize_json" class="fn">deserialize_json</a>&lt;'life0, 'async_trait, T&gt;(
+        &amp;'life0 mut self
+    ) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html" title="struct core::pin::Pin">Pin</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html" title="struct alloc::boxed::Box">Box</a>&lt;dyn <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a>&lt;Output = <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, <a class="enum" href="enum.Error.html" title="enum trillium_api::Error">Error</a>&gt;&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'async_trait&gt;&gt;
+       <span class="where">where T: <a class="trait" href="https://docs.rs/serde/1.0.188/serde/de/trait.DeserializeOwned.html" title="trait serde::de::DeserializeOwned">DeserializeOwned</a> + 'async_trait,
+             Self: 'async_trait,
+             'life0: 'async_trait</span>;
+<span class="item-spacer"></span>    fn <a href="#tymethod.serialize" class="fn">serialize</a>&lt;'life0, 'life1, 'async_trait, T&gt;(
+        &amp;'life0 mut self,
+        body: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;'life1 T</a>
+    ) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html" title="struct core::pin::Pin">Pin</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html" title="struct alloc::boxed::Box">Box</a>&lt;dyn <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a>&lt;Output = <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="enum" href="enum.Error.html" title="enum trillium_api::Error">Error</a>&gt;&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'async_trait&gt;&gt;
+       <span class="where">where T: <a class="trait" href="https://docs.rs/serde/1.0.188/serde/ser/trait.Serialize.html" title="trait serde::ser::Serialize">Serialize</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'async_trait,
+             Self: 'async_trait,
+             'life0: 'async_trait,
+             'life1: 'async_trait</span>;
+<span class="item-spacer"></span>    fn <a href="#tymethod.store_error" class="fn">store_error</a>&lt;T, E&gt;(&amp;mut self, result: <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, E&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;
+       <span class="where">where E: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static</span>;
+}</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Extension trait that adds api methods to [<code>trillium::Conn</code>]</p>
+</div></details><h2 id="required-methods" class="small-section-header">Required Methods<a href="#required-methods" class="anchor">§</a></h2><div class="methods"><details class="toggle method-toggle" open><summary><section id="tymethod.with_json" class="method"><a class="src rightside" href="../src/trillium_api/api_conn_ext.rs.html#63">source</a><h4 class="code-header">fn <a href="#tymethod.with_json" class="fn">with_json</a>(self, response: &amp;impl <a class="trait" href="https://docs.rs/serde/1.0.188/serde/ser/trait.Serialize.html" title="trait serde::ser::Serialize">Serialize</a>) -&gt; Self</h4></section></summary><div class="docblock"><p>Sends a json response body. This sets a status code of 200,
+serializes the body with serde_json, sets the content-type to
+application/json, and <a href="trillium::Conn::halt">halts</a> the
+conn. If serialization fails, a 500 status code is sent as per
+[<code>trillium::conn_try</code>]</p>
+<h6 id="examples"><a href="#examples">Examples</a></h6>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>trillium_api::{json, ApiConnExt};
+<span class="kw">async fn </span>handler(conn: trillium::Conn) -&gt; trillium::Conn {
+    conn.with_json(<span class="kw-2">&amp;</span><span class="macro">json!</span>({ <span class="string">&quot;json macro&quot;</span>: <span class="string">&quot;is reexported&quot; </span>}))
+}
+
+<span class="macro">assert_ok!</span>(
+    get(<span class="string">&quot;/&quot;</span>).on(<span class="kw-2">&amp;</span>handler),
+    <span class="string">r#&quot;{&quot;json macro&quot;:&quot;is reexported&quot;}&quot;#</span>,
+    <span class="string">&quot;content-type&quot; </span>=&gt; <span class="string">&quot;application/json&quot;
+</span>);</code></pre></div>
+<h6 id="overriding-status-code"><a href="#overriding-status-code">overriding status code</a></h6>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>trillium_api::ApiConnExt;
+<span class="kw">use </span>serde::Serialize;
+
+<span class="attr">#[derive(Serialize)]
+</span><span class="kw">struct </span>ApiResponse {
+   string: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str,
+   number: usize
+}
+
+<span class="kw">async fn </span>handler(conn: trillium::Conn) -&gt; trillium::Conn {
+    conn.with_json(<span class="kw-2">&amp;</span>ApiResponse { string: <span class="string">&quot;not the most creative example&quot;</span>, number: <span class="number">100 </span>})
+        .with_status(<span class="number">201</span>)
+}
+
+<span class="macro">assert_response!</span>(
+    get(<span class="string">&quot;/&quot;</span>).on(<span class="kw-2">&amp;</span>handler),
+    Status::Created,
+    <span class="string">r#&quot;{&quot;string&quot;:&quot;not the most creative example&quot;,&quot;number&quot;:100}&quot;#</span>,
+    <span class="string">&quot;content-type&quot; </span>=&gt; <span class="string">&quot;application/json&quot;
+</span>);</code></pre></div>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.deserialize" class="method"><a class="src rightside" href="../src/trillium_api/api_conn_ext.rs.html#148-150">source</a><h4 class="code-header">fn <a href="#tymethod.deserialize" class="fn">deserialize</a>&lt;'life0, 'async_trait, T&gt;(
+    &amp;'life0 mut self
+) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html" title="struct core::pin::Pin">Pin</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html" title="struct alloc::boxed::Box">Box</a>&lt;dyn <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a>&lt;Output = <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, <a class="enum" href="enum.Error.html" title="enum trillium_api::Error">Error</a>&gt;&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'async_trait&gt;&gt;<span class="where fmt-newline">where
+    T: <a class="trait" href="https://docs.rs/serde/1.0.188/serde/de/trait.DeserializeOwned.html" title="trait serde::de::DeserializeOwned">DeserializeOwned</a> + 'async_trait,
+    Self: 'async_trait,
+    'life0: 'async_trait,</span></h4></section></summary><div class="docblock"><p>Attempts to deserialize a type from the request body, based on the
+request content type.</p>
+<p>By default, both application/json and
+application/x-www-form-urlencoded are supported, and future
+versions may add accepted request content types. Please open an
+issue if you need to accept another content type.</p>
+<p>To exclusively accept application/json, disable default features
+on this crate.</p>
+<p>This sets a status code of Status::Ok if and only if no status
+code has been explicitly set.</p>
+<h6 id="examples-1"><a href="#examples-1">Examples</a></h6><h6 id="deserializing-to-value"><a href="#deserializing-to-value">Deserializing to [<code>Value</code>]</a></h6>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>trillium_api::{ApiConnExt, Value};
+
+<span class="kw">async fn </span>handler(<span class="kw-2">mut </span>conn: trillium::Conn) -&gt; trillium::Conn {
+    <span class="kw">let </span>value: Value = <span class="macro">trillium::conn_try!</span>(conn.deserialize().<span class="kw">await</span>, conn);
+    conn.with_json(<span class="kw-2">&amp;</span>value)
+}
+
+<span class="macro">assert_ok!</span>(
+    post(<span class="string">&quot;/&quot;</span>)
+        .with_request_body(<span class="string">r#&quot;key=value&quot;#</span>)
+        .with_request_header(<span class="string">&quot;content-type&quot;</span>, <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>)
+        .on(<span class="kw-2">&amp;</span>handler),
+    <span class="string">r#&quot;{&quot;key&quot;:&quot;value&quot;}&quot;#</span>,
+    <span class="string">&quot;content-type&quot; </span>=&gt; <span class="string">&quot;application/json&quot;
+</span>);
+</code></pre></div>
+<h6 id="deserializing-a-concrete-type"><a href="#deserializing-a-concrete-type">Deserializing a concrete type</a></h6>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>trillium_api::ApiConnExt;
+
+<span class="attr">#[derive(serde::Deserialize)]
+</span><span class="kw">struct </span>KvPair { key: String, value: String }
+
+<span class="kw">async fn </span>handler(<span class="kw-2">mut </span>conn: trillium::Conn) -&gt; trillium::Conn {
+    <span class="kw">match </span>conn.deserialize().<span class="kw">await </span>{
+        <span class="prelude-val">Ok</span>(KvPair { key, value }) =&gt; {
+            conn.with_status(<span class="number">201</span>)
+                .with_body(<span class="macro">format!</span>(<span class="string">&quot;{} is {}&quot;</span>, key, value))
+                .halt()
+        }
+
+        <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; conn.with_status(<span class="number">422</span>).with_body(<span class="string">&quot;nope&quot;</span>).halt()
+    }
+}
+
+<span class="macro">assert_response!</span>(
+    post(<span class="string">&quot;/&quot;</span>)
+        .with_request_body(<span class="string">r#&quot;key=name&amp;value=trillium&quot;#</span>)
+        .with_request_header(<span class="string">&quot;content-type&quot;</span>, <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>)
+        .on(<span class="kw-2">&amp;</span>handler),
+    Status::Created,
+    <span class="string">r#&quot;name is trillium&quot;#</span>,
+);
+
+<span class="macro">assert_response!</span>(
+    post(<span class="string">&quot;/&quot;</span>)
+        .with_request_body(<span class="string">r#&quot;name=trillium&quot;#</span>)
+        .with_request_header(<span class="string">&quot;content-type&quot;</span>, <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>)
+        .on(<span class="kw-2">&amp;</span>handler),
+    Status::UnprocessableEntity,
+    <span class="string">r#&quot;nope&quot;#</span>,
+);
+
+</code></pre></div>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.deserialize_json" class="method"><a class="src rightside" href="../src/trillium_api/api_conn_ext.rs.html#153-155">source</a><h4 class="code-header">fn <a href="#tymethod.deserialize_json" class="fn">deserialize_json</a>&lt;'life0, 'async_trait, T&gt;(
+    &amp;'life0 mut self
+) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html" title="struct core::pin::Pin">Pin</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html" title="struct alloc::boxed::Box">Box</a>&lt;dyn <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a>&lt;Output = <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, <a class="enum" href="enum.Error.html" title="enum trillium_api::Error">Error</a>&gt;&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'async_trait&gt;&gt;<span class="where fmt-newline">where
+    T: <a class="trait" href="https://docs.rs/serde/1.0.188/serde/de/trait.DeserializeOwned.html" title="trait serde::de::DeserializeOwned">DeserializeOwned</a> + 'async_trait,
+    Self: 'async_trait,
+    'life0: 'async_trait,</span></h4></section></summary><div class="docblock"><p>Deserializes json without any Accepts header content negotiation</p>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.serialize" class="method"><a class="src rightside" href="../src/trillium_api/api_conn_ext.rs.html#158-160">source</a><h4 class="code-header">fn <a href="#tymethod.serialize" class="fn">serialize</a>&lt;'life0, 'life1, 'async_trait, T&gt;(
+    &amp;'life0 mut self,
+    body: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;'life1 T</a>
+) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html" title="struct core::pin::Pin">Pin</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html" title="struct alloc::boxed::Box">Box</a>&lt;dyn <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a>&lt;Output = <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="enum" href="enum.Error.html" title="enum trillium_api::Error">Error</a>&gt;&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'async_trait&gt;&gt;<span class="where fmt-newline">where
+    T: <a class="trait" href="https://docs.rs/serde/1.0.188/serde/ser/trait.Serialize.html" title="trait serde::ser::Serialize">Serialize</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'async_trait,
+    Self: 'async_trait,
+    'life0: 'async_trait,
+    'life1: 'async_trait,</span></h4></section></summary><div class="docblock"><p>Serializes the provided body using Accepts header content negotiation</p>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.store_error" class="method"><a class="src rightside" href="../src/trillium_api/api_conn_ext.rs.html#163-165">source</a><h4 class="code-header">fn <a href="#tymethod.store_error" class="fn">store_error</a>&lt;T, E&gt;(&amp;mut self, result: <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, E&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;<span class="where fmt-newline">where
+    E: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static,</span></h4></section></summary><div class="docblock"><p>Store any error variant on this conn and return the Ok variant</p>
+</div></details></div><h2 id="foreign-impls" class="small-section-header">Implementations on Foreign Types<a href="#foreign-impls" class="anchor">§</a></h2><details class="toggle implementors-toggle"><summary><section id="impl-ApiConnExt-for-Conn" class="impl"><a class="src rightside" href="../src/trillium_api/api_conn_ext.rs.html#169-279">source</a><a href="#impl-ApiConnExt-for-Conn" class="anchor">§</a><h3 class="code-header">impl <a class="trait" href="trait.ApiConnExt.html" title="trait trillium_api::ApiConnExt">ApiConnExt</a> for Conn</h3></section></summary><div class="impl-items"><section id="method.with_json" class="method trait-impl"><a class="src rightside" href="../src/trillium_api/api_conn_ext.rs.html#170-185">source</a><a href="#method.with_json" class="anchor">§</a><h4 class="code-header">fn <a href="#tymethod.with_json" class="fn">with_json</a>(self, response: &amp;impl <a class="trait" href="https://docs.rs/serde/1.0.188/serde/ser/trait.Serialize.html" title="trait serde::ser::Serialize">Serialize</a>) -&gt; Self</h4></section><section id="method.deserialize" class="method trait-impl"><a class="src rightside" href="../src/trillium_api/api_conn_ext.rs.html#187-224">source</a><a href="#method.deserialize" class="anchor">§</a><h4 class="code-header">fn <a href="#tymethod.deserialize" class="fn">deserialize</a>&lt;'life0, 'async_trait, T&gt;(
+    &amp;'life0 mut self
+) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html" title="struct core::pin::Pin">Pin</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html" title="struct alloc::boxed::Box">Box</a>&lt;dyn <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a>&lt;Output = <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, <a class="enum" href="enum.Error.html" title="enum trillium_api::Error">Error</a>&gt;&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'async_trait&gt;&gt;<span class="where fmt-newline">where
+    T: <a class="trait" href="https://docs.rs/serde/1.0.188/serde/de/trait.DeserializeOwned.html" title="trait serde::de::DeserializeOwned">DeserializeOwned</a> + 'async_trait,
+    Self: 'async_trait,
+    'life0: 'async_trait,</span></h4></section><section id="method.deserialize_json" class="method trait-impl"><a class="src rightside" href="../src/trillium_api/api_conn_ext.rs.html#226-234">source</a><a href="#method.deserialize_json" class="anchor">§</a><h4 class="code-header">fn <a href="#tymethod.deserialize_json" class="fn">deserialize_json</a>&lt;'life0, 'async_trait, T&gt;(
+    &amp;'life0 mut self
+) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html" title="struct core::pin::Pin">Pin</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html" title="struct alloc::boxed::Box">Box</a>&lt;dyn <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a>&lt;Output = <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, <a class="enum" href="enum.Error.html" title="enum trillium_api::Error">Error</a>&gt;&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'async_trait&gt;&gt;<span class="where fmt-newline">where
+    T: <a class="trait" href="https://docs.rs/serde/1.0.188/serde/de/trait.DeserializeOwned.html" title="trait serde::de::DeserializeOwned">DeserializeOwned</a> + 'async_trait,
+    Self: 'async_trait,
+    'life0: 'async_trait,</span></h4></section><section id="method.store_error" class="method trait-impl"><a class="src rightside" href="../src/trillium_api/api_conn_ext.rs.html#236-247">source</a><a href="#method.store_error" class="anchor">§</a><h4 class="code-header">fn <a href="#tymethod.store_error" class="fn">store_error</a>&lt;T, E&gt;(&amp;mut self, result: <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, E&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;<span class="where fmt-newline">where
+    E: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static,</span></h4></section><section id="method.serialize" class="method trait-impl"><a class="src rightside" href="../src/trillium_api/api_conn_ext.rs.html#249-278">source</a><a href="#method.serialize" class="anchor">§</a><h4 class="code-header">fn <a href="#tymethod.serialize" class="fn">serialize</a>&lt;'life0, 'life1, 'async_trait, T&gt;(
+    &amp;'life0 mut self,
+    body: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;'life1 T</a>
+) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html" title="struct core::pin::Pin">Pin</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html" title="struct alloc::boxed::Box">Box</a>&lt;dyn <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a>&lt;Output = <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="enum" href="enum.Error.html" title="enum trillium_api::Error">Error</a>&gt;&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'async_trait&gt;&gt;<span class="where fmt-newline">where
+    T: <a class="trait" href="https://docs.rs/serde/1.0.188/serde/ser/trait.Serialize.html" title="trait serde::ser::Serialize">Serialize</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'async_trait,
+    Self: 'async_trait,
+    'life0: 'async_trait,
+    'life1: 'async_trait,</span></h4></section></div></details><h2 id="implementors" class="small-section-header">Implementors<a href="#implementors" class="anchor">§</a></h2><div id="implementors-list"></div><script src="../implementors/trillium_api/api_conn_ext/trait.ApiConnExt.js" data-ignore-extern-crates="trillium" async></script></section></div></main></body></html>

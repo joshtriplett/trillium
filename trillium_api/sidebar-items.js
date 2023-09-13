@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Error","Value"],"fn":["api"],"macro":["json"],"struct":["ApiHandler","Body","Halt","Json","State"],"trait":["ApiConnExt","FromConn"]};

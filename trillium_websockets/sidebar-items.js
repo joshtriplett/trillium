@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Error","Message"],"fn":["websocket"],"struct":["WebSocket","WebSocketConfig","WebSocketConn"],"trait":["WebSocketHandler"],"type":["Result"]};
